@@ -15,7 +15,7 @@ public/lib
 app/tests/coverage/
 .bower-*/
 .idea/
-
+config/env/development.js
 # MEAN.js app and assets
 # ======================
 config/sslcerts/*.pem
