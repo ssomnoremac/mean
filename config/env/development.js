@@ -4,8 +4,8 @@ module.exports = {
 	db: {
 		uri: 'mongodb://localhost/mean-dev',
 		options: {
-			user: '',
-			pass: ''
+			user: 'test',
+			pass: '123'
 		}
 	},
 	log: {
