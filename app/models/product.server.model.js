@@ -15,7 +15,12 @@ var ProductSchema = new Schema({
     sku: { type: Number },
     upc: { type: String },
     seo: { type: String },
+    is_visible: { type: Boolean },
+    is_discountable: { type: Boolean },
+    is_preorderable: { type: Boolean },
     is_featured: { type: Boolean },
+    position: Number,
+    category_position: Number,
     title: {
         type: String,
         default: '',
@@ -38,11 +43,11 @@ var ProductSchema = new Schema({
     },
     details: {
         description: { type: String },
-        attributes: { type: Array },
+        attributes: [{ type: String }],
         variants: {
             color: [{ type: String}],
             size: { type: String },
-            material: [{ type: Array }]
+            material: [{ type: String }]
         }
     },
     images : [{ type: Schema.Types.ObjectId, ref: 'Image' }]

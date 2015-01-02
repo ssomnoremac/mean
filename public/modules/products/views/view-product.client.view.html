@@ -10,11 +10,13 @@
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
 	</div>
-	<small>
-		<em class="text-muted">
-			Created on
-			<span data-ng-bind="product.created | date:'mediumDate'"></span>
-		</em>
-	</small>
 	<p class="lead" data-ng-bind="product.title"></p>
+	<small class="list-group-item-text">
+				Category
+		<span data-ng-bind="product.category"></span>
+	</small>
+	<small class="list-group-item-text">
+				Price
+		<span data-ng-bind="product.pricing.retail"></span>
+	</small>
 </section>
