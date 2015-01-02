@@ -3,8 +3,8 @@
 module.exports = {
 	db: {
 		uri: 'mongodb://localhost/mean-dev',
-		options: {
-			user: 'test',
+		options: {	
+			user: 'testing',
 			pass: '123'
 		}
 	},
