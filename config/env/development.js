@@ -5,7 +5,7 @@ module.exports = {
 		uri: 'mongodb://localhost/mean-dev',
 		options: {	
 			user: 'testing',
-			pass: '123'
+			pass: '123456'
 		}
 	},
 	log: {
