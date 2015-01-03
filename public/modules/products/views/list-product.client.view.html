@@ -1,4 +1,4 @@
-<section data-ng-controller="ProductsContainer" data-ng-init="find()">
+<section data-ng-controller="ProductsController" data-ng-init="find()">
 	<div class="page-header">
 		<h1>Products</h1>
 	</div>
@@ -20,6 +20,7 @@
 			<p class="list-group-item-text" data-ng-bind="product.content"></p>
 		</a>
 	</div>
+	<!-- Below doesn't work -->
 	<div class="alert alert-warning text-center" data-ng-if="products.$resolved && !products.length">
 		No products yet, why don't you <a href="/#!/products/create">create one</a>?
 	</div>

@@ -10,13 +10,13 @@ module.exports = function(app) {
 	// Product Routes
 	app.route('/products')
 		.get(products.list)
-		.post(users.requiresLogin, products.hasAuthorization, products.create);
+		.post(users.requiresLogin, products.create); // products.hasAuthorization removed
 
 	app.route('/products/:productId')
 		.get(products.view)
-		.put(users.requiresLogin, products.hasAuthorization, products.update)
-		.delete(users.requiresLogin, products.hasAuthorization, products.delete);
+		.put(users.requiresLogin, products.update) // products.hasAuthorization, removed
+		.delete(users.requiresLogin, products.delete); // products.hasAuthorization removed
 
 	// Finish by binding the article middleware
-	app.param('productId', products.articleByID);
+	app.param('productId', products.productByID);
 };

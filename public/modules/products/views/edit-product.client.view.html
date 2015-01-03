@@ -13,6 +13,14 @@
 					<div ng-show="submitted && productForm.title.$invalid" class="help-block">
 						<p ng-show="productForm.title.$error.required" class="text-danger">Title is required</p>
 					</div>
+					<label class="control-label" for="category">Category</label>
+					<div class="controls">
+						<input name="category" type="text" data-ng-model="product.category" id="category" class="form-control" placeholder="Category">
+					</div>
+					<label class="control-label" for="Price">Price</label>
+					<div class="controls">
+						<input name="price" type="text" data-ng-model="product.pricing.retail" id="price" class="form-control" >
+					</div>
 				</div>
 				<!-- Need to add fields
 				<div class="form-group" ng-class="{ 'has-error' : submitted && articleForm.content.$invalid}">

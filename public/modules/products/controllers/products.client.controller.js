@@ -1,12 +1,14 @@
 'use strict';
 
-angular.module('products').controller('ProductController', ['$scope', '$stateParams', '$location', 'Authentication', 'Products',
+angular.module('products').controller('ProductsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Products',
 	function($scope, $stateParams, $location, Authentication, Products) {
 		$scope.authentication = Authentication;
 
 		$scope.create = function() {
 			var product = new Products({
 				title: this.title,
+				category: this.category,
+				price : this.price
 				//add the rest of the form data
 			});
 			product.$save(function(response) {

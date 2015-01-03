@@ -11,7 +11,7 @@ var ProductSchema = new Schema({
     _id : Number,
     created: { type: Date, default: Date.now },
     category: { type: String },
-    collection: { type : String },
+    season: { type : String },
     sku: { type: Number },
     upc: { type: String },
     seo: { type: String },
