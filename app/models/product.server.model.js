@@ -8,7 +8,6 @@ var mongoose = require("mongoose"),
  * Product Schema
  */
 var ProductSchema = new Schema({
-    _id : Number,
     created: { type: Date, default: Date.now },
     category: { type: String },
     season: { type : String },

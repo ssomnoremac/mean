@@ -1,5 +1,4 @@
 'use strict';
-'use strict';
 
 // Setting up route
 angular.module('products').config(['$stateProvider',

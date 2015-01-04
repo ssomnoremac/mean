@@ -8,13 +8,14 @@ angular.module('products').controller('ProductsController', ['$scope', '$statePa
 			var product = new Products({
 				title: this.title,
 				category: this.category,
-				price : this.price
+				pricing: { retail: this.price } 
 				//add the rest of the form data
 			});
 			product.$save(function(response) {
 				$location.path('products/' + response._id);
-
 				$scope.title = '';
+				$scope.category = '';
+				$scope.retail = '';
 				//add the rest of the form data
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
@@ -48,7 +49,7 @@ angular.module('products').controller('ProductsController', ['$scope', '$statePa
 		};
 
 		$scope.find = function() {
-			$scope.articles = Products.query();
+			$scope.products = Products.query();
 		};
 
 		$scope.findOne = function() {
