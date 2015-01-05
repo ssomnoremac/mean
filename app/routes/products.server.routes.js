@@ -17,6 +17,10 @@ module.exports = function(app) {
 		.put(users.requiresLogin, products.update) // products.hasAuthorization, removed
 		.delete(users.requiresLogin, products.delete); // products.hasAuthorization removed
 
+	app.route('/categories')
+		.get(products.listCategories)
+		.post(products.createCategory);
+		
 	// Finish by binding the article middleware
 	app.param('productId', products.productByID);
 };

@@ -3,13 +3,21 @@
 var mongoose = require("mongoose"),
     Schema = mongoose.Schema;
 
-
+/**
+ * Product Category
+ */
+var CategorySchema = new Schema({
+    title : String,
+    products: [{ type: Schema.Types.ObjectId, ref: 'Product' }],
+    description: { type : String },
+    image_url: String
+});
 /**
  * Product Schema
  */
 var ProductSchema = new Schema({
     created: { type: Date, default: Date.now },
-    category: { type: String },
+    _category: { type: Number, ref: 'Category' },
     season: { type : String },
     sku: { type: Number },
     upc: { type: String },
@@ -49,14 +57,14 @@ var ProductSchema = new Schema({
             material: [{ type: String }]
         }
     },
-    images : [{ type: Schema.Types.ObjectId, ref: 'Image' }]
+    images : [{ type: Schema.Types.ObjectId, ref: 'ProductImage' }]
 });
 
 
 /**
  * Image Schema
  */
-var ImageSchema = new Schema({
+var ProductImageSchema = new Schema({
     _product: { type: Number, ref: 'Product' },
     position: Number,
     url: String,
@@ -64,6 +72,9 @@ var ImageSchema = new Schema({
     width: Number,
     height: Number,
 });
+
+
     
-mongoose.model('Image', ImageSchema);
+mongoose.model('ProductImage', ProductImageSchema);
 mongoose.model('Product', ProductSchema);
+mongoose.model('Category', CategorySchema);

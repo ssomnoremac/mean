@@ -6,6 +6,7 @@
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	Product = mongoose.model('Product'),
+	Category = mongoose.model('Category'),
 	_ = require('lodash');
 
 /**
@@ -98,13 +99,34 @@ exports.productByID = function(req, res, next, id) {
 };
 
 /**
- * product authorization middleware
+ * create Category
  */
-exports.hasAuthorization = function(req, res, next) {
-	if ((req.user.roles).indexOf('admin') == -1) {
-		return res.status(403).send({
-			message: 'User is not authorized'
-		});
-	}
-	next();
+exports.createCategory = function(req, res) {
+	var category = new Category(req.body);
+
+	category.save(function(err) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			res.json(category);
+		}
+	});
+};
+
+/**
+ * List of Categories
+ */
+exports.listCategories = function(req, res) {
+	Category.find()
+		.exec(function(err, categories) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			res.json(categories);
+		}
+	});
 };

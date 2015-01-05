@@ -20,6 +20,14 @@ angular.module('products').config(['$stateProvider',
 		state('editproduct', {
 			url: '/products/:productId/edit',
 			templateUrl: 'modules/products/views/edit-product.client.view.html'
+		}).
+		state('createcategory', {
+			url: '/categories/create',
+			templateUrl: 'modules/products/views/create-category.client.view.html'
+		}).
+		state('listcategories', {
+			url: '/categories',
+			templateUrl: 'modules/products/views/list-category.client.view.html'
 		});
 	}
 ]);

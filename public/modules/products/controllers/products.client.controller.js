@@ -1,9 +1,10 @@
 'use strict';
 
-angular.module('products').controller('ProductsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Products',
-	function($scope, $stateParams, $location, Authentication, Products) {
+angular.module('products').controller('ProductsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Products','Categories',
+	function($scope, $stateParams, $location, Authentication, Products, Categories) {
 		$scope.authentication = Authentication;
-
+		$scope.categories = Categories.query();
+		$scope.category = $scope.categories[0]	
 		$scope.create = function() {
 			var product = new Products({
 				title: this.title,
@@ -57,5 +58,32 @@ angular.module('products').controller('ProductsController', ['$scope', '$statePa
 				productId: $stateParams.productId
 			});
 		};
+	}
+]);
+
+
+angular.module('products').controller('CategoriesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Categories',
+	function($scope, $stateParams, $location, Authentication, Categories) {
+		$scope.authentication = Authentication;
+
+		$scope.create = function() {
+			var category = new Categories({
+				title: this.title,
+				description: this.description
+			});
+			category.$save(function(response) {
+				$location.path('categories/');
+				//add the rest of the form data
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+
+		$scope.find = function() {
+			$scope.products = Categories.query();
+		};
+
+	
 	}
 ]);
