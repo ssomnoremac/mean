@@ -17,8 +17,9 @@
 				<div class="form-group">
 					<label class="control-label" for="category">Category</label>
 					<div class="controls">
-						 <select name='category' data-ng-model='category.title' id="category" data-ng-options="cat.title for cat in categories"></select>
+						 <select name='category' data-ng-model="default_category" id="category" data-ng-options="cat.title for cat in categories"></select>
 					</div>
+					<a href="/#!/categories/create">Create a new Category</a>
 				</div>
 				<div class="form-group">
 					<label class="control-label" for="Price">Price</label>

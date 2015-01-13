@@ -10,7 +10,7 @@
 			</small>
 			<small class="list-group-item-text">
 				Category
-				<span data-ng-bind="product.category"></span>
+				<span data-ng-bind="product._category.title"></span>
 			</small>
 			<small class="list-group-item-text">
 				Price
@@ -20,6 +20,24 @@
 			<p class="list-group-item-text" data-ng-bind="product.content"></p>
 		</a>
 	</div>
+	
+	<table st-table="rowCollection" class="table table-striped">
+	<thead>
+	<tr>
+		<th>name</th>
+		<th>category</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="product in products">
+		<td data-ng-bind="product.title"></td>
+		<td data-ng-bind="product._category"></td>
+	</tr>
+	</tbody>
+</table>
+	
+	
+	
 	<!-- Below doesn't work -->
 	<div class="alert alert-warning text-center" data-ng-if="products.$resolved && !products.length">
 		No products yet, why don't you <a href="/#!/products/create">create one</a>?

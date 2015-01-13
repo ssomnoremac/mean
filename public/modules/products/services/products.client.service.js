@@ -13,14 +13,3 @@ angular.module('products').factory('Products', ['$resource',
 	}
 ]);
 
-angular.module('products').factory('Categories', ['$resource',
-	function($resource) {
-		return $resource('categories/:categoryId', {
-			productId: '@_id'
-		}, {
-			update: {
-				method: 'PUT'
-			}
-		});
-	}
-]);
