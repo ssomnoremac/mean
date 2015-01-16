@@ -14,10 +14,11 @@
 				<div class="form-group">
 					<label class="control-label" for="category">Category</label>
 					<div class="controls">
-						 <select name="category" data-ng-init="show_select=true" data-ng-show="categories.length > 0" data-ng-model="default_category" data-ng-options="cat.title for cat in categories"></select>
-						 <input data-ng-show="categories.length < 1 || show_input" name="category" type="text" data-ng-model="category"  class="form-control" placeholder="Title" required>
+						 <select data-ng-hide="show_input" data-ng-model="default_category" data-ng-options="cat for cat in categories"></select>
+						 <input data-ng-show="show_input" name="category" type="text" data-ng-model="selected_category"  class="form-control" required>
 					</div>
-					<button ng-click="show_input == !show_input">Create a new Category</a>
+					<a ng-click="show_input=!show_input" data-ng-hide="show_input">Create a new Category</a>
+					<a ng-click="show_input=!show_input" data-ng-show="show_input">Use an existing Category</a>
 				</div>
 				<div class="form-group">
 					<label class="control-label" for="Price">Price</label>
@@ -25,6 +26,7 @@
 						<input name="price" type="text" data-ng-model="price" id="price" class="form-control" >
 					</div>
 				</div>
+				
 				<!-- need to add form for each field
 				<div class="form-group">
 					<label class="control-label" for="content">Content</label>

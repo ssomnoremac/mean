@@ -3,14 +3,40 @@
 angular.module('products').controller('ProductsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Products','Categories',
 	function($scope, $stateParams, $location, Authentication, Products, Categories) {
 		$scope.authentication = Authentication;
-		$scope.products = Products.query();
-		$scope.categories = Categories.query();
-
+		var position_array = [];
+		$scope.products = Products.query(function(products){
+			if (products.length > 0){
+				products.forEach(function(p){
+					position_array.push(p.position);
+				});
+				position_array.sort();
+			}
+		});
+		$scope.categories = Categories.query(function(categories){
+			if (categories.length < 1) {
+				$scope.show_input = true;
+			}
+			else{
+				$scope.show_input = false;
+				$scope.default_category = categories[0];
+			}
+		});
+		$scope.$watch('selected_category',function(v){
+			for (var i in $scope.categories) {
+				var category = $scope.categories[i];
+				if (category == v) {
+					$scope.selected_category = category;
+					break;
+				}
+			}
+			
+		});
 		$scope.create = function() {
 			var product = new Products({
 				title: this.title,
-				category: this.category,
-				pricing: { retail: this.price } 
+				category: $scope.selected_category,
+				pricing: { retail: this.price },
+				position: Math.max.apply(Math, position_array) + 1
 				//add the rest of the form data
 			});
 			product.$save(function(response) {

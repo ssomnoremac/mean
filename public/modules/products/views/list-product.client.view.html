@@ -24,18 +24,20 @@
 	<table st-table="rowCollection" class="table table-striped">
 	<thead>
 	<tr>
+		<th>position</th>
 		<th>name</th>
 		<th>category</th>
 	</tr>
 	</thead>
 	<tbody>
-	<tr ng-repeat="product in products">
-		<td data-ng-bind="product.title"></td>
-		<td data-ng-bind="product.category"></td>
-	</tr>
-	<tr ng-repeat="category in categories">
-		<td data-ng-bind="category"></td>
-	</tr>
+		<tr ng-repeat="product in products">
+			<a data-ng-href="#!/products/{{product._id}}">
+				<td data-ng-bind="product.position"></td>
+				<td data-ng-bind="product.title"></td>
+				<td data-ng-bind="product.category"></td>
+			</a>
+		</tr>
+
 	</tbody>
 </table>
 	
