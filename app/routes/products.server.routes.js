@@ -18,9 +18,7 @@ module.exports = function(app) {
 		.delete(users.requiresLogin, products.delete); // products.hasAuthorization removed
 
 	app.route('/categories')
-		.get(products.listCategories)
-		.post(products.createCategory);
-		
-	// Finish by binding the article middleware
+		.get(products.categories);
+	
 	app.param('productId', products.productByID);
 };

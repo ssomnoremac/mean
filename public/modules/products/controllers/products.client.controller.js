@@ -1,15 +1,11 @@
 'use strict';
 
-angular.module('products').controller('ProductsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Products',
-	function($scope, $stateParams, $location, Authentication, Products) {
-		
+angular.module('products').controller('ProductsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Products','Categories',
+	function($scope, $stateParams, $location, Authentication, Products, Categories) {
 		$scope.authentication = Authentication;
-		Products.find().distinct('category',function(error, categories) {
-    		$scope.categories = categories;
-    		$scope.default_category = categories[0];
-    		$scope.error = error.data.message;
-  		});
-			
+		$scope.products = Products.query();
+		$scope.categories = Categories.query();
+
 		$scope.create = function() {
 			var product = new Products({
 				title: this.title,
@@ -56,6 +52,7 @@ angular.module('products').controller('ProductsController', ['$scope', '$statePa
 
 		$scope.find = function() {
 			$scope.products = Products.query();
+			$scope.categories = Categories.query()
 		};
 
 		$scope.findOne = function() {

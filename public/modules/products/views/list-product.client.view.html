@@ -31,7 +31,10 @@
 	<tbody>
 	<tr ng-repeat="product in products">
 		<td data-ng-bind="product.title"></td>
-		<td data-ng-bind="product._category"></td>
+		<td data-ng-bind="product.category"></td>
+	</tr>
+	<tr ng-repeat="category in categories">
+		<td data-ng-bind="category"></td>
 	</tr>
 	</tbody>
 </table>
