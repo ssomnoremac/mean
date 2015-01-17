@@ -3,14 +3,14 @@
 		<h1>Products</h1>
 	</div>
 	<div class="list-group">
-		<a data-ng-repeat="product in products" data-ng-href="#!/products/{{product._id}}" class="list-group-item">
+		<a data-ng-repeat="product in products" lr-drag-src='rows' lr-drop-success="dropSuccess(e, item, collection)" lr-drop-target='rows' data-ng-href="#!/products/{{product._id}}" class="list-group-item">
 			<small class="list-group-item-text">
 				Title
 				<span data-ng-bind="product.title"></span>
 			</small>
 			<small class="list-group-item-text">
 				Category
-				<span data-ng-bind="product._category.title"></span>
+				<span data-ng-bind="product.category"></span>
 			</small>
 			<small class="list-group-item-text">
 				Price
@@ -29,8 +29,8 @@
 		<th>category</th>
 	</tr>
 	</thead>
-	<tbody>
-		<tr ng-repeat="product in products">
+	<tbody ui-sortable>
+		<tr ng-repeat="product in products"  lr-drag-src>
 			<a data-ng-href="#!/products/{{product._id}}">
 				<td data-ng-bind="product.position"></td>
 				<td data-ng-bind="product.title"></td>

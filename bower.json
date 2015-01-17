@@ -11,6 +11,7 @@
     "angular-bootstrap": "~0.12.0",
     "angular-ui-utils": "~0.1.1",
     "angular-ui-router": "~0.2.11",
-    "smart-table": "https://github.com/lorenzofox3/Smart-Table.git#~1.4.5"
+    "smart-table": "https://github.com/lorenzofox3/Smart-Table.git#~1.4.5",
+    "lrDragNDrop": "https://github.com/lorenzofox3/lrDragNDrop.git#~1.0.2"
   }
 }

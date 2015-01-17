@@ -72,7 +72,7 @@ exports.delete = function(req, res) {
  * List of products
  */
 exports.list = function(req, res) {
-	Product.find().sort('-created')
+	Product.find().sort('position')
 		.exec(function(err, products) {
 		if (err) {
 			return res.status(400).send({

@@ -86,6 +86,14 @@ angular.module('products').controller('ProductsController', ['$scope', '$statePa
 				productId: $stateParams.productId
 			});
 		};
+		/* on drag update all position fields of the products */
+		$scope.dropSuccess = function(e, item, collection) {
+            var products = collection
+            products.forEach(function (product, i) {
+                product.position = i
+            	product.$update()
+            });
+        };
 	}
 ]);
 
